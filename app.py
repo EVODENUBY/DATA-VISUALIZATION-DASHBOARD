@@ -22,6 +22,7 @@ server = app.server
 # App layout
 app.layout = html.Div([
     html.Div([
+        html.H3("EVODENUBY", className="header-title"),
         html.H1("IMDb Movies Dashboard", className="header-title"),
         html.P(
             "Explore movie ratings, budgets, and popularity across years",
@@ -159,20 +160,6 @@ def update_heatmap(selected_year):
     plt.close()
     encoded_image = base64.b64encode(buf.getvalue()).decode('ascii')
     return f'data:image/png;base64,{encoded_image}'
-
-
-from dash import ClientsideFunction
-
-app.clientside_callback(
-    ClientsideFunction(
-        namespace='clientside',
-        function_name='fixDropdowns'
-    ),
-    Output('dummy-output', 'children'),
-    [Input('url', 'pathname')]
-)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
