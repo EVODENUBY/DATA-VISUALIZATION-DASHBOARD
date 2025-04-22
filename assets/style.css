@@ -1,0 +1,216 @@
+/* ===== Base Styles ===== */
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --highlight-color: #ff6b6b;
+  }
+  
+  body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* ===== Layout Components ===== */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), #6a11cb);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .header-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* ===== Card System ===== */
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    background: var(--card-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* ===== Form Elements ===== */
+  .dropdown {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .Select-control {
+    border-radius: 8px !important;
+    border: 1px solid #ddd !important;
+    padding: 0.5rem !important;
+  }
+  
+  /* ===== Graph Containers ===== */
+  .dash-graph {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* ===== Typography ===== */
+  h1, h2, h3 {
+    color: var(--text-color);
+    margin-top: 0;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+  }
+  
+  /* ===== Responsive Design ===== */
+  @media (max-width: 768px) {
+    .wrapper {
+      grid-template-columns: 1fr;
+    }
+    
+    .header-title {
+      font-size: 2rem;
+    }
+    
+    .container {
+      padding: 1rem;
+    }
+  }
+  
+  /* ===== Animation Enhancements ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .card {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* ===== Custom Scrollbar ===== */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a56e8;
+  }
+
+
+  /* Fix dropdown z-index issues */
+.Select-menu-outer {
+    z-index: 1000 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .Select-control {
+    z-index: 1 !important;
+  }
+  
+  /* Ensure cards don't create stacking contexts */
+  .card {
+    position: static !important;
+    overflow: visible !important;
+  }
+  
+  /* Optional: Better dropdown styling */
+  .Select-option {
+    padding: 10px 15px !important;
+    transition: background-color 0.2s ease !important;
+  }
+  
+  .Select-option:hover {
+    background-color: #f5f5f5 !important;
+  }
+
+
+  /* ===== DROPDOWN FIXES ===== */
+/* Main container must allow overflow */
+.container {
+    overflow: visible !important;
+  }
+  
+  /* Cards must not clip content */
+  .card {
+    position: relative;  /* Changed from static */
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+  
+  /* Dropdown container */
+  .Select {
+    position: relative;
+    z-index: 100;
+  }
+  
+  /* Dropdown menu - critical fixes */
+  .Select-menu-outer {
+    z-index: 9999 !important;
+    position: absolute !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    border-radius: 0 0 8px 8px !important;
+    border-top: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Dropdown control */
+  .Select-control {
+    z-index: 1000 !important;
+    position: relative !important;
+  }
+  
+  /* When dropdown is open */
+  .Select.is-open .Select-menu-outer {
+    display: block !important;
+    transform: none !important;
+  }
