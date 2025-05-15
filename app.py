@@ -7,13 +7,13 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-import utils  # Our helper functions
+import utils  
 
 app = dash.Dash(__name__, assets_folder='assets')
 
-# Load data
+# Load data into a DataFrame
 df = pd.read_csv('data/imdb_movies.csv',sep=';', on_bad_lines='skip' )
-df = utils.clean_data(df)  # Basic cleaning
+df = utils.clean_data(df)  #for data cleaning
 
 # Initialize Dash app
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
@@ -75,7 +75,15 @@ app.layout = html.Div([
         ], className="card"),
     ], className="wrapper"),
 ], className="container")
-
+#footer
+app.layout.children.append(
+    html.Div([
+        html.P("Created by Evode MUYISINGIZEMWESE", className="footer-text"),
+        html.A("GitHub", href="https://www.github.com/EVODENUBY", target="_blank", className="footer-link"),
+        html.A("Linkedin", href="#", target="_blank", className="footer-link"),
+        html.A("YouTube", href="https://www.youtube.com/@EVODENUBY", target="_blank", className="footer-link"),
+    ], className="footer")
+)
 # Callbacks for interactivity
 @app.callback(
     Output('rating-vs-budget', 'figure'),
