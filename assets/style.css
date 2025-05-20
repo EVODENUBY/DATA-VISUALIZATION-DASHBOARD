@@ -1,285 +1,287 @@
-/* ===== Base Styles ===== */
+/* ===== Advanced Dashboard Colors ===== */
 :root {
-    --primary-color: hsl(229, 53%, 53%);
-    --secondary-color: #6c757d;
-    --background-color: #9cafc2;
+    --primary-color: #5f2eea;
+    --primary-gradient: linear-gradient(135deg, #5f2eea 0%, #00c6fb 100%);
+    --secondary-color: #00c6fb;
+    --accent-color: #ff6b81;
+    --background-color: #a3bfdc;
     --card-color: #ffffff;
-    --text-color: #333333;
-    --highlight-color: #ff6b6b;
-  }
-  
-  body {
-    font-family: poppins;
-    background-color: var(--background-color);
+    --text-color: #22223b;
+    --muted-text: #6c757d;
+    --highlight-color: #ffb86c;
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+}
+
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    background: var(--background-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    line-height: 1.3;
-  }
-  
-  /* ===== Layout Components ===== */
-  .container {
+    line-height: 1.5;
+}
+
+/* COMPONENTS */
+.container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
-  }
-  
-  .header {
+    overflow: visible !important;
+}
+
+.header {
     text-align: center;
-    margin-bottom: 2.5rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--primary-color), #6f627c);
+    margin-bottom: 2rem;
+    padding: 2.5rem 2rem 2rem 2rem;
+    background: var(--primary-gradient);
     color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header-title {
-    font-size: 2rem;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: visible;
+}
+
+.header-title {
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: linear-gradient(135deg, var(--secondary-color), #af4261);
-  }
-  
-  .header-description {
-    font-size: 1.1rem;
-    font-weight: bolder;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #fff 30%, #ffe6fa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-description {
+    font-size: 1.15rem;
+    font-weight: 600;
     font-style: italic;
     text-transform: uppercase;
-    letter-spacing: 4px;
-
-    opacity:0.9;
+    letter-spacing: 3px;
+    opacity: 0.95;
     max-width: 800px;
     margin: 0 auto;
-    color: var(--text-color);
-  }
-  
-  /* Card System  */
-  .wrapper {
+    color: #f8f8f8;
+}
+
+/* CARD SYSTEM */
+.wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
     margin-bottom: 2rem;
-  }
-  
-  .card {
+}
+
+.card {
     background: var(--card-color);
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
-  }
-  
-  /* ===== Form Elements ===== */
-  .dropdown {
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 1.7rem 1.5rem;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border: none;
+    position: relative;
+    overflow: visible !important;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.card:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 16px 32px 0 rgba(95,46,234,0.13);
+    border: 3.5px solid var(--primary-color);
+}
+
+.dropdown {
     width: 100%;
     margin-bottom: 1rem;
-  }
-  
-  .Select-control {
-    border-radius: 8px !important;
-    border: 1px solid #ddd !important;
-    padding: 0.5rem !important;
-  }
-  
-  /* ===== Graph Containers ===== */
-  .dash-graph {
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  /* ===== Typography ===== */
-  h1, h2, h3 {
-    color: var(--text-color);
-    margin-top: 0;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-    color: var(--primary-color);
-  }
+    z-index: 10000 !important;
+    position: relative !important;
+}
+.Select, .Select-control, .Select-menu-outer {
+    z-index: 10000 !important;
+    position: relative !important;
+}
 
-  .card #heatmap-image{
-    padding-left: 0px;
-    max-width: 670px;
-  }
-
-  .footer{
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  .footer A{
-    color:black;
-    font-weight: 600;
-    text-decoration: none;
-    padding-left: 10px;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-    
-  }
-  .footer A:hover{
-    color: #e83a83;
-    
-  } 
-  
-  /* ===== Responsive Design ===== */
-  @media (max-width: 768px) {
-    .wrapper {
-      grid-template-columns: 1fr;
-    }
-    
-    .header-title {
-      font-size: 2rem;
-    }
-    
-    .container {
-      padding: 1rem;
-    }
-    .card{
-      margin-right: 50px;
-    }
-    .card #top-directors, .card #heatmap-image{
-      max-width: 600px;
-      margin-right: 20px;
-    }
-  }
-
-  @media(max-width: 480px) {
-    .header-title {
-      font-size: 1.5rem;
-    }
-    
-    .header-description {
-      font-size: 1rem;
-    }
-    
-    .card {
-      padding: 1rem;
-      width: 100%;
-      margin: auto;
-    }
-    
-    .wrapper {
-      grid-template-columns: 1fr;
-    }
-    
-    .card #top-directors, .card #heatmap-image{
-      max-width: 100%;
-      margin-right: 0px;
-    } 
-    
-  }
-
-  
-  /* ===== Animation Enhancements ===== */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .card {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-  
-  /* editing scroll bar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #1a9270;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #e83a83;
-  }
-
-
-  /* Fix dropdown z-index issues */
 .Select-menu-outer {
-    z-index: 1000 !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  .Select-control {
-    z-index: 1 !important;
-  }
-  
-  /* Ensure cards don't create stacking contexts */
-  .card {
-    position: static !important;
-    overflow: visible !important;
-  }
-  
-  /* Optional: Better dropdown styling */
-  .Select-option {
-    padding: 10px 15px !important;
-    transition: background-color 0.2s ease !important;
-  }
-  
-  .Select-option:hover {
-    background-color: #f5f5f5 !important;
-  }
-
-
-  /* ===== DROPDOWN FIXES ===== */
-/* Main container must allow overflow */
-.container {
-    overflow: visible !important;
-  }
-  
-  /* Cards must not clip content */
-  .card {
-    position: relative;  /* Changed from static */
-    overflow: visible !important;
-    z-index: auto !important;
-  }
-  
-  /* Dropdown container */
-  .Select {
-    position: relative;
-    z-index: 100;
-  }
-  
-  /* Dropdown menu - critical fixes */
-  .Select-menu-outer {
-    z-index: 9999 !important;
+    z-index: 99999 !important;
     position: absolute !important;
     width: 100% !important;
     margin-top: 0 !important;
-    border-radius: 0 0 8px 8px !important;
+    border-radius: 0 0 12px 12px !important;
     border-top: none !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-    max-height: 300px !important;
+    box-shadow: 0 8px 24px rgba(95,46,234,0.13) !important;
+    max-height: 320px !important;
     overflow-y: auto !important;
-  }
-  
-  /* Dropdown control */
-  .Select-control {
-    z-index: 1000 !important;
-    position: relative !important;
-  }
-  
-  /* When dropdown is open */
-  .Select.is-open .Select-menu-outer {
-    display: block !important;
-    transform: none !important;
-  }
+    background: #fff !important;
+}
+
+.card >.dropdown{
+  height: auto !important;
+}
+
+.Select-option {
+    padding: 12px 18px !important;
+    transition: background-color 0.2s;
+    font-size: 1rem;
+}
+
+.Select-option:hover, .Select-option.is-focused {
+    background: var(--primary-gradient) !important;
+    color: #fff !important;
+}
+
+.Select-control {
+    border-radius: 10px !important;
+    border: 1.5px solid #e0e0e0 !important;
+    padding: 0.6rem !important;
+    background: #f8faff !important;
+    font-size: 1rem !important;
+    box-shadow: none !important;
+}
+
+/* GRAPH CONTAINERS */
+.dash-graph, .card .dash-graph, .card > div, .card > .js-plotly-plot {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 320px;
+    overflow-x: auto;
+}
+
+.card #heatmap-image {
+    padding-left: 0px;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/*TYPOGRAPHY*/
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-top: 0;
+    font-family: inherit;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.2rem 1rem;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.footer-text {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.footer-link {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0 12px;
+    transition: color 0.3s;
+    font-size: 1.15rem;
+}
+
+.footer-link img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s, transform 0.2s;
+    margin: 0 6px;
+}
+
+.footer-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.footer-link:hover img {
+    filter: brightness(0) invert(45%) sepia(1) saturate(5) hue-rotate(330deg);
+    transform: scale(1.18);
+}
+
+/* SETTING RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .container {
+        padding: 1rem;
+    }
+    .wrapper {
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .header-title {
+        font-size: 2rem;
+    }
+    .container {
+        padding: 0.7rem;
+    }
+    .card {
+        margin-right: 0;
+        padding: 1.2rem 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.3rem;
+    }
+    .header-description {
+        font-size: 0.95rem;
+    }
+    .card {
+        padding: 0.7rem 0.3rem;
+        width: 100%;
+        margin: auto;
+    }
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+    .card #top-directors, .card #heatmap-image {
+        max-width: 100%;
+        margin-right: 0px;
+    }
+}
+
+/* ===== Animation Enhancements ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #e0e7ef;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}

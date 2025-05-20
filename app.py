@@ -11,15 +11,15 @@ import utils
 
 app = dash.Dash(__name__, assets_folder='assets')
 
-# Load data into a DataFrame
+# LOAD DATA INTO DATA FRAME
 df = pd.read_csv('data/imdb_movies.csv',sep=';', on_bad_lines='skip' )
-df = utils.clean_data(df)  #for data cleaning
+df = utils.clean_data(df)  #FOR DATA CLEANING
 
-# Initialize Dash app
+                # INITIALIZE DASH APP
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 server = app.server
 
-# App layout
+                # APP LAYOUT 
 app.layout = html.Div([
     html.Div([
         html.H3("EVODENUBY", className="header-title"),
@@ -40,7 +40,7 @@ app.layout = html.Div([
                 clearable=False,
                 className="dropdown"
             ),
-        ], className="card"),
+        ]),
         
         html.Div([
             dcc.Dropdown(
@@ -51,7 +51,7 @@ app.layout = html.Div([
                 placeholder="Select genre(s)",
                 className="dropdown"
             ),
-        ], className="card"),
+        ]),
     ], className="wrapper"),
     
     html.Div([
@@ -75,16 +75,35 @@ app.layout = html.Div([
         ], className="card"),
     ], className="wrapper"),
 ], className="container")
-#footer
+
+                #FOOTER
 app.layout.children.append(
     html.Div([
-        html.P("Created by Evode MUYISINGIZEMWESE", className="footer-text"),
-        html.A("GitHub", href="https://www.github.com/EVODENUBY", target="_blank", className="footer-link"),
-        html.A("Linkedin", href="#", target="_blank", className="footer-link"),
-        html.A("YouTube", href="https://www.youtube.com/@EVODENUBY", target="_blank", className="footer-link"),
-    ], className="footer")
+        html.P("EVODENUBY", className="footer-text"),
+        html.A(
+            html.Span([
+                html.Img(src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg", 
+                         style={"height": "28px", "verticalAlign": "middle"}),
+            ]), 
+            href="https://www.github.com/EVODENUBY", target="_blank", className="footer-link"
+        ),
+        html.A(
+            html.Span([
+                html.Img(src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg", 
+                         style={"height": "28px", "verticalAlign": "middle"}),
+            ]), 
+            href="http://www.linkedin.com/in/evode-m-24495733a", target="_blank", className="footer-link"
+        ),
+        html.A(
+            html.Span([
+                html.Img(src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg", 
+                         style={"height": "28px", "verticalAlign": "middle"}),
+            ]), 
+            href="https://www.youtube.com/@EVODENUBY", target="_blank", className="footer-link"
+        ),
+    ], className="footer")  
 )
-# Callbacks for interactivity
+                #CALL BACKS
 @app.callback(
     Output('rating-vs-budget', 'figure'),
     [Input('year-slider', 'value'),
