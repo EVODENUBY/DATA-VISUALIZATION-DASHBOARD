@@ -8,9 +8,6 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import utils  
-
-app = dash.Dash(__name__, assets_folder='assets')
-
 # LOAD DATA INTO DATA FRAME
 df = pd.read_csv('data/imdb_movies.csv',sep=';', on_bad_lines='skip' )
 df = utils.clean_data(df)  #FOR DATA CLEANING
